@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link,  } from "react-router-dom";
 import "../App.css";
 
 const questions = {
@@ -61,6 +62,7 @@ const questions = {
   }],
 };
 
+
 class QuestionsScreen extends Component {
   state = {
     sections: [],
@@ -71,15 +73,37 @@ class QuestionsScreen extends Component {
     secIdx : 1,
     checkedOption: -1,
     answer: [],
-    submit: false
+    submit: false,
+    answerKey: [],
+    score: 0
   };
 
 
   componentDidMount() {
+    console.log(this.props)
     this.setState((state) => ({questions: questions[state.currentSection]}))
     this.setState({sections: Object.keys(questions)})
+    this.setState({answerKey: [0,1,3,0,1,2,1]})
   }
+
+
+
+  // submitHandle =() => {
+  //   this.findScore()
+  //   console.log(this.state.score)
+  // }
   
+  submitHandle = () => {
+    const {answer, answerKey, score} = this.state
+    
+    for(let i=0; i<answerKey.length; i++){
+      if(answer[i]===answerKey[i]){
+        this.setState((state) => ({score: state.score+1}))
+      }
+    }
+    console.log(score)
+
+  }
   
   handleSectionButton = (e) => {
     this.setState({quesNum: 0})
@@ -211,7 +235,7 @@ console.log(this.state.sections.slice(-1)[0])
               : null}
 
             <div className="w-100 d-inline-flex justify-content-between">
-                  {/*I will implememt this feature*/}
+                  {/*I will implememt this feature in future*/}
 
               {/*<div className="flex px-3 ">
                 
@@ -235,14 +259,19 @@ console.log(this.state.sections.slice(-1)[0])
                     Save and Next
                   </button>
 
+
                   {this.state.submit ?
-                    <button
-                    type="button"
-                    className="btn btn-success mx-5"
-                    onClick={this.submitHandle}
-                  >
-                    Submit
-                  </button> : null}
+                  
+                    <Link to="/score">
+                      <button
+                      type="button"
+                      className="btn btn-success mx-5"
+                      onClick={this.submitHandle}
+                    >
+                      Submit
+                    </button>
+                    </Link>
+                     : null}
                 
               </div>
             </div>
@@ -254,5 +283,5 @@ console.log(this.state.sections.slice(-1)[0])
   }
 }
 
-export default QuestionsScreen;
+export default (QuestionsScreen);
  

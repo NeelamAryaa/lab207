@@ -1,8 +1,14 @@
-import React, { Component, Fragment } from "react";
+import  { Fragment, useEffect } from "react";
 import NavBar from "./navbar";
 
-class ScoreCard extends Component {
-  render() {
+const ScoreCard = (props) =>  {
+
+  useEffect(() => {
+  console.log(props)
+    
+  });
+ 
+    
     return (
         <Fragment>
         <NavBar />
@@ -17,7 +23,7 @@ class ScoreCard extends Component {
         </div>
         </Fragment>
     );
-  }
+  
 }
 
 export default ScoreCard;

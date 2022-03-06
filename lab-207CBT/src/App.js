@@ -1,22 +1,22 @@
 import "./App.css";
 import HomePage from "./components/homepage";
 import Instructions from "./components/instructions";
-import ExamSummary from "./components/exam-summary"
 import QuestionsScreen from "./components/question-screen"
 import ScoreCard from "./components/score"
-import { Fragment } from "react";
+import {Switch, Route} from "react-router-dom";
 
 
 
 function App() {
   return (
-    <Fragment>
-    <HomePage/>
-    <Instructions/>
-    <QuestionsScreen />
-    <ExamSummary />
-    <ScoreCard />
-    </Fragment>
+    <div className="App">
+    <Switch>
+        <Route path="/" component={<HomePage/>} />
+        <Route path="instruction" component={<Instructions/>} />
+        <Route path="questionsscreen" component={<QuestionsScreen />} />
+        <Route path="score" component={<ScoreCard />} />    
+    </Switch>
+    </div>    
   );
 }
 

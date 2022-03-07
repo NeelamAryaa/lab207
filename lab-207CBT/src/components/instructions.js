@@ -1,49 +1,44 @@
-import  { useState } from "react";
-import { useNavigate  } from "react-router-dom";
+import React, { Component, Fragment } from "react";
 
-const Instructions = () => {
-  
- const [checked, setChecked] = useState(false)
- const [checkBoxError, setCheckBoxError] = useState(false)
-  
- const navigate = useNavigate()
 
- const onSubmitHandler = () => { 
-  
-    if (checked) {
-      setCheckBoxError(false );
+class Instructions extends Component {
+  state = {
+    checked: false,
+    checkBoxError: false,
+  };
+
+  onSubmitHandler = (e) => {
+    const { checked } = this.state;
+    
+    if (checked === false) {
+      this.setState({ checkBoxError: true });
+      
+    }
+
+    if (checked === true) {
       console.log("goto question screen")
+    this.props.history.push("/quesScreen")
 
     }
 
-    else{
-      setCheckBoxError(true );
 
-      
-
-    }
-    // navigate(1)
     
   };
 
-  const handleChange = (e) => {
-    
-    console.log(e.target.checked)
-    setChecked(e.target.checked );
-    
-    if (checked) {
-      setCheckBoxError(true);
-      
-    } 
-    else {
-      setCheckBoxError(false);
+  handleChange = (e) => {
+    this.setState({ checked: e.target.checked });
 
+    if (e.target.checked) {
+      this.setState({ checkBoxError: false });
     }
-    
   };
 
-     return (
-      <div>
+  render() {
+
+    const {checkBoxError} = this.state
+
+    return (
+      <Fragment>
         <nav className="navbar bg-info ">
           <div className="container-fluid text-light fw-bold">INSTRUCTIONS</div>
         </nav>
@@ -202,7 +197,7 @@ const Instructions = () => {
             type="checkbox"
             class="form-check-input"
             id="exampleCheck1"
-            onChange={(e) => handleChange(e)}
+            onChange={(e) => this.handleChange(e)}
           />
           <label class="form-check-label" for="exampleCheck1">
             I have read and understood the instructions. All Computer Hardwares
@@ -215,24 +210,22 @@ const Instructions = () => {
         </div>
         {checkBoxError ? (
           <div className="text-danger ps-3">
+            
             *You must agree before go ahead.
           </div>
         ) : null}
-
-        
-          <button
-            type="submit"
-            onClick={() => navigate("/questionsscreen")}
-            className="btn btn-primary my-4 mx-3"
-          >
-            I am ready to begin
-          </button>
-        
-
-        
-      </div>
+          
+        <button
+          type="submit"
+          onClick={this.onSubmitHandler}
+          className="btn btn-primary my-4 mx-3"
+        >
+          I am ready to begin
+        </button>
+       
+      </Fragment>
     );
-  
+  }
 }
 
 export default Instructions;

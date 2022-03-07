@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from "react";
-import { Link,  } from "react-router-dom";
 import "../App.css";
 
 const questions = {
@@ -62,7 +61,6 @@ const questions = {
   }],
 };
 
-
 class QuestionsScreen extends Component {
   state = {
     sections: [],
@@ -80,51 +78,25 @@ class QuestionsScreen extends Component {
 
 
   componentDidMount() {
-    console.log(this.props)
     this.setState((state) => ({questions: questions[state.currentSection]}))
     this.setState({sections: Object.keys(questions)})
     this.setState({answerKey: [0,1,3,0,1,2,1]})
   }
+  
+  
+  // handleSectionButton = (e) => {
+  //   this.setState({quesNum: 0})
+  //   this.setState({currentSection: e.target.name})
+  //   this.setState((state) => ({questions: questions[state.currentSection]}))
+  //   this.setState((state) => ({ques: questions[state.currentSection][state.quesNum]}))
+
+  //   this.setState((state)=> ({secIdx: state.sections.indexOf(state.currentSection)+1}))
 
 
-
-  // submitHandle =() => {
-  //   this.findScore()
-  //   console.log(this.state.score)
   // }
-  
-  submitHandle = () => {
-    const {answer, answerKey, score} = this.state
-    
-    for(let i=0; i<answerKey.length; i++){
-      if(answer[i]===answerKey[i]){
-        this.setState((state) => ({score: state.score+1}))
-      }
-    }
-    console.log(score)
-
-  }
-  
-  handleSectionButton = (e) => {
-    this.setState({quesNum: 0})
-    this.setState({currentSection: e.target.name})
-    this.setState((state) => ({questions: questions[state.currentSection]}))
-    this.setState((state) => ({ques: questions[state.currentSection][state.quesNum]}))
-
-    this.setState((state)=> ({secIdx: state.sections.indexOf(state.currentSection)+1}))
 
 
-  }
-
-  nextQuestion = () => {
-console.log(this.state.sections.slice(-1)[0])
-
-    
-
- 
-    // if(questions.length === this.state.answer.length){
-
-    // }
+  nextQuestion = () => {    
     this.setState((state) => ({answer: [...state.answer,state.checkedOption]}))
     this.setState({checkedOption: -1})
 
@@ -135,23 +107,24 @@ console.log(this.state.sections.slice(-1)[0])
 
     if (this.state.questions.length === this.state.quesNum+1 ){
       this.setState({quesNum: 0})
-      if(this.state.currentSection!==this.state.sections.slice(-1)[0] )
-      {this.setState((state) => ({currentSection: state.sections[state.secIdx]}))
-      this.setState((state) => ({questions: questions[state.currentSection]}))
-      this.setState((state) => ({ques: questions[state.currentSection][state.quesNum]}))
-      this.setState((state)=> ({secIdx: state.secIdx+1}))
-}
+      if(this.state.currentSection!==this.state.sections.slice(-1)[0]){
+        this.setState((state) => ({currentSection: state.sections[state.secIdx]}))
+        this.setState((state) => ({questions: questions[state.currentSection]}))
+        this.setState((state) => ({ques: questions[state.currentSection][state.quesNum]}))
+        this.setState((state)=> ({secIdx: state.secIdx+1}))
+      }
       if(this.state.currentSection===this.state.sections.slice(-1)[0] ){
         this.setState({submit: true})
       }
 
-      }
+    }
     
-      else {
-        
-        this.setState((state) => ({quesNum: state.quesNum+1}))
-        this.setState((state) => ({ques: questions[state.currentSection][state.quesNum]}))
-      }
+    else {
+      this.setState((state) => ({quesNum: state.quesNum+1}))
+      this.setState((state) => ({ques: questions[state.currentSection][state.quesNum]}))
+    }
+
+      
   }
 
   handleCheckedOption = (idx) => {
@@ -159,12 +132,24 @@ console.log(this.state.sections.slice(-1)[0])
     this.setState({checkedOption: idx})
   }
 
+  submitHandle = () => {
+    const {answer, answerKey, score} = this.state
+    let scr =0
+    for(let i=0; i<answerKey.length; i++){
+      if(answer[i]===answerKey[i]){
+        scr=scr+1
+      }
+    }
+    this.setState({score: scr},() => {this.props.history.push({pathname: '/score', state: {score: this.state.score} })})
+
+    console.log("score",score)
+
+    
+  }
+
   
   render() { 
-    // const question = this.state.questions 
     const ques = this.state.ques 
-
-    // console.log(question.map(q => (q.question))) 
     return (
       <Fragment>
         <nav
@@ -235,7 +220,7 @@ console.log(this.state.sections.slice(-1)[0])
               : null}
 
             <div className="w-100 d-inline-flex justify-content-between">
-                  {/*I will implememt this feature in future*/}
+                  {/*I will implememt this feature*/}
 
               {/*<div className="flex px-3 ">
                 
@@ -259,19 +244,15 @@ console.log(this.state.sections.slice(-1)[0])
                     Save and Next
                   </button>
 
-
                   {this.state.submit ?
-                  
-                    <Link to="/score">
-                      <button
-                      type="button"
-                      className="btn btn-success mx-5"
-                      onClick={this.submitHandle}
-                    >
-                      Submit
-                    </button>
-                    </Link>
-                     : null}
+                    <button
+                    type="button"
+                    className="btn btn-success mx-5"
+                    onClick={this.submitHandle}
+                  >
+                    Submit
+                  </button>
+                   : null}
                 
               </div>
             </div>
@@ -283,5 +264,5 @@ console.log(this.state.sections.slice(-1)[0])
   }
 }
 
-export default (QuestionsScreen);
+export default QuestionsScreen;
  

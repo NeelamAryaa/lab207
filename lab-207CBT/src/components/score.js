@@ -1,5 +1,4 @@
 import { Fragment } from "react";
-import { withRouter } from "react-router-dom";
 import NavBar from "./navbar";
 
 const ScoreCard = (props) => {
@@ -21,4 +20,4 @@ const ScoreCard = (props) => {
     );
   }
 
-export default withRouter(ScoreCard);
+export default ScoreCard;

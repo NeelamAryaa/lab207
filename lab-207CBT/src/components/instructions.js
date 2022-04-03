@@ -197,7 +197,9 @@ class Instructions extends Component {
             type="checkbox"
             class="form-check-input"
             id="exampleCheck1"
-            onChange={(e) => this.handleChange(e)}
+            checked={this.state.checked}
+            onChange={(e) => this.handleChange(e)
+            }
           />
           <label class="form-check-label" for="exampleCheck1">
             I have read and understood the instructions. All Computer Hardwares

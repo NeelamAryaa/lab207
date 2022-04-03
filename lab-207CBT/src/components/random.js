@@ -123,3 +123,20 @@
 
 
           
+
+          // handleSectionButton = (e) => {
+  //   this.setState({quesNum: 0})
+  //   this.setState({currentSection: e.target.name})
+  //   this.setState((state) => ({questions: questions[state.currentSection]}))
+  //   this.setState((state) => ({ques: questions[state.currentSection][state.quesNum]}))
+
+  //   this.setState((state)=> ({secIdx: state.sections.indexOf(state.currentSection)+1}))
+
+
+  // }
+
+
+  
+    // if(this.state.secIdx === this.state.sections.length ){
+    //   this.setState({secIdx: 0})
+    // }

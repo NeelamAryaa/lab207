@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 
-
 class Instructions extends Component {
   state = {
     checked: false,
@@ -10,18 +9,16 @@ class Instructions extends Component {
   onSubmitHandler = (e) => {
     const { checked } = this.state;
     
-    if (checked === false) {
+    if (!checked) {
       this.setState({ checkBoxError: true });
       
     }
 
-    if (checked === true) {
+    else {
       console.log("goto question screen")
     this.props.history.push("/quesScreen")
 
     }
-
-
     
   };
 

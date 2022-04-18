@@ -5,3 +5,70 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+/* form css */
+.container{
+  display: flex;
+ flex-direction: row;
+ justify-content: space-around;
+}
+.form{
+ height: 82vh;
+ width: 25vw;
+ display: flex;
+ flex-direction: column;  
+ border-radius: 20px;
+ padding: 1rem 3rem;
+ box-shadow: 5px 5px 10px rgb(209, 208, 208);
+}
+
+.label{
+ padding-top: 2rem;
+}
+
+.card-container{
+ text-align: center;
+}
+
+.card{
+ display: flex;
+ flex-direction: column;
+ text-transform: capitalize;
+ min-height: 16vh;
+ width: 20vw;
+ text-align: center;
+ margin: 20px 0px;  
+ border-radius: 10px;
+ box-shadow: 5px 5px 10px rgb(209, 208, 208);
+
+}
+
+.name-header{
+ align-items: center;
+ display: flex;
+ justify-content: center;
+ height: 7vh;
+ border-radius: 10px 10px 0 0;
+ background-color: rgb(155, 247, 242);
+}
+
+.card-body{
+ padding: 10px;
+}
+
+.btn{
+ margin: 15px 5px;
+}
+
+.feedback{
+ margin-top: 3rem;
+}
+
+input, select ,textarea {
+ font-size: 18px;
+}
+
+.name-header {
+  background-color: rgb(107 227 220) !important;
+}
+

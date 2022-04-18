@@ -1,63 +1,132 @@
 {
   "questions": {
-  "mathematics" : [
-  {
-    "id":1,
-    "section": "mathematics",
-    "question":
-      "How many words starting with letter D can be formed by taking all letters from word DELHI, so that the letters are not repeated?",
-    "option": [24, 46, 28, 30]
-  },
-  {
-    "id":2,
-    "section": "mathematics",
-    "question":
-      "How many words starting with letter D can be formed ?",
-    "option": [2, 6, 8, 30]
-  }
-
-],
-  
-"analitical-reasoning" : [{
-    "id":1,
-    "section": "analitical-reasoning",
-    "question":
-      "Sum of ages of Anu and Bhanu is 10 years more than sum of ages of Bhanu, Chanu and Dhanu. Average age of Chanu and Dhanu is 19 years. Find the average age of Anu and Dhanu if Dhanu is 10 years elder than Chanu.",
-    "option": [25, 36, 31, 30]
-  }],
-  "computer" : [
-  {
-    "id":1,
-    "section": "computer",
-    "question":
-      "The memory unit which directly communicates with the CPU is known as",
-    "option": [
-      "primary memory",
-      "secondary memory",
-      "cache memory",
-      "shared memory"
+    "mathematics": [
+      {
+        "id": 1,
+        "section": "mathematics",
+        "question": "How many words starting with letter D can be formed by taking all letters from word DELHI, so that the letters are not repeated?",
+        "option": [
+          24,
+          46,
+          28,
+          30
+        ]
+      },
+      {
+        "id": 2,
+        "section": "mathematics",
+        "question": "How many words starting with letter D can be formed ?",
+        "option": [
+          2,
+          6,
+          8,
+          30
+        ]
+      }
+    ],
+    "analitical-reasoning": [
+      {
+        "id": 1,
+        "section": "analitical-reasoning",
+        "question": "Sum of ages of Anu and Bhanu is 10 years more than sum of ages of Bhanu, Chanu and Dhanu. Average age of Chanu and Dhanu is 19 years. Find the average age of Anu and Dhanu if Dhanu is 10 years elder than Chanu.",
+        "option": [
+          25,
+          36,
+          31,
+          30
+        ]
+      }
+    ],
+    "computer": [
+      {
+        "id": 1,
+        "section": "computer",
+        "question": "The memory unit which directly communicates with the CPU is known as",
+        "option": [
+          "primary memory",
+          "secondary memory",
+          "cache memory",
+          "shared memory"
+        ]
+      }
+    ],
+    "english": [
+      {
+        "id": 1,
+        "section": "english",
+        "question": "Choose the correct expression of approval:",
+        "option": [
+          "super",
+          "damn",
+          "rotten",
+          "hell"
+        ]
+      },
+      {
+        "id": 2,
+        "section": "english",
+        "question": "Choose the incorrect expression of approval:",
+        "option": [
+          "super",
+          "damn",
+          "rotten",
+          "hell"
+        ]
+      },
+      {
+        "id": 3,
+        "section": "english",
+        "question": "Choose the correct expression of not approval:",
+        "option": [
+          "super",
+          "damn",
+          "rotten",
+          "hell"
+        ]
+      }
     ]
-  }],
-  "english" : [
-  {
-    "id":1,
-    "section": "english",
-    "question": "Choose the correct expression of approval:",
-    "option": ["super", "damn", "rotten", "hell"]
   },
-  {
-    "id":2,
-    "section": "english",
-    "question": "Choose the incorrect expression of approval:",
-    "option": ["super", "damn", "rotten", "hell"]
-  },
-  {
-    "id":3,
-    "section": "english",
-    "question": "Choose the correct expression of not approval:",
-    "option": ["super", "damn", "rotten", "hell"]
-  }]
-},
-"answerKey": [0,1,3,0,1,2,1]
+  "answerKey": [
+    0,
+    1,
+    3,
+    0,
+    1,
+    2,
+    1
+  ],
+  "feedbacks": [
+    {
+      "id": "6093e1ee-974b-4e80-87e8-6488d16a860c",
+      "first_name": "neelam",
+      "last_name": "aryaa",
+      "city": "delhi",
+      "score": "12",
+      "level": "easy"
+    },
+    {
+      "id": "e205a32a-bcf9-437c-876b-6c147a1a65a2",
+      "first_name": "riya",
+      "last_name": "garg",
+      "city": "ranchi",
+      "score": "85",
+      "level": "easy"
+    },
+    {
+      "id": "a898dc4d-fe88-4d83-be0a-e0cd3dada477",
+      "first_name": "Manisha",
+      "last_name": "minz",
+      "city": "ranchi",
+      "score": "21",
+      "level": "hard"
+    },
+    {
+      "id": "0e0ed0a0-c7aa-4aba-9b12-35b0181245bb",
+      "first_name": "rahul",
+      "last_name": "arya",
+      "city": "delhi",
+      "score": "25",
+      "level": "medium"
+    }
+  ]
 }
-

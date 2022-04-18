@@ -1,4 +1,4 @@
-<div className="col-3 p-0 border-start">
+{/* <div className="col-3 p-0 border-start">
             <div className="row mx-0 text-primary">
               <div className="col ps-3">
                 <u>Question paper</u>
@@ -139,4 +139,4 @@
   
     // if(this.state.secIdx === this.state.sections.length ){
     //   this.setState({secIdx: 0})
-    // }
+    // } */}

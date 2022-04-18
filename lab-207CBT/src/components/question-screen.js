@@ -18,16 +18,18 @@ class QuestionsScreen extends Component {
     submit: false,
     answerKey: [],
     score: 0,
-    counter: 30
+    counter: 180
 
   };
+
+  
 
   counter = () => {
     this.setState((state) => ({counter: state.counter+1}), () => console.log(this.state.counter))
   }
 
   componentDidMount() {
-
+    console.log("compdidmount")
     axios.get("http://localhost:3000/questions")
         .then(res => { 
           console.log(res)
@@ -48,7 +50,7 @@ class QuestionsScreen extends Component {
 
  
 
-    setInterval(() => this.setState((state) => ({counter: state.counter-1})), 1000*60);
+    setInterval(() => this.setState((state) => ({counter: state.counter-1})), 1000);
 
      
   }
@@ -61,8 +63,8 @@ class QuestionsScreen extends Component {
 
     let all_questions=this.state.all_questions
 
-    this.setState((state) => ({answer: [...state.answer,state.checkedOption]}))
-    this.setState({checkedOption: -1})
+    this.setState((state) => ({answer: [...state.answer,state.checkedOption], checkedOption: -1}))
+    // this.setState({checkedOption: -1})
 
     
     if (this.state.questions.length === this.state.quesNum+1 ){
@@ -70,7 +72,7 @@ class QuestionsScreen extends Component {
       if(this.state.currentSection!==this.state.sections.slice(-1)[0]){
         this.setState((state) => ({currentSection: state.sections[state.secIdx]}))
         this.setState((state) => ({questions: all_questions[state.currentSection]}))
-        this.setState((state) => ({ques: all_questions[state.currentSection][state.quesNum]}))
+        this.setState((state) => ({ques: state.questions[state.quesNum]}))
         this.setState((state)=> ({secIdx: state.secIdx+1}))
       }
       if(this.state.currentSection===this.state.sections.slice(-1)[0] ){
@@ -81,7 +83,7 @@ class QuestionsScreen extends Component {
     
     else {
       this.setState((state) => ({quesNum: state.quesNum+1}))
-      this.setState((state) => ({ques: all_questions[state.currentSection][state.quesNum]}))
+      this.setState((state) => ({ques: state.questions[state.quesNum]}))
     }
 
       
@@ -93,7 +95,6 @@ class QuestionsScreen extends Component {
   }
 
   submitHandle = () => {
-
     axios.get("http://localhost:3000/answerKey")
         .then(res => 
           {
@@ -103,8 +104,6 @@ class QuestionsScreen extends Component {
             for(let i=0; i<answerKey.length; i++){
               if(answer[i]===answerKey[i]){
                 scr=scr+1
-
-              
               }
             }
 
@@ -112,9 +111,8 @@ class QuestionsScreen extends Component {
           }
         )
 
-        
+        // console.log(this.props)
 
-    
   }
 
   
@@ -130,31 +128,23 @@ class QuestionsScreen extends Component {
           NIMCET - 2021
         </nav>
         
-        <div className="row  mx-0 px-0 fs-5">
+        <div className="row  mx-0 px-0 " style={{fontSize: "18px"}}>
           <div className="col-12 px-0">
             <div className=" mx-0">
               <div
                 className="row text-primary w-75"
-                // style={{ fontSize: "16px" }}
               >
-                <button type="button" name="mathematics" className={`col fs-5  px-0 btn ${this.state.currentSection==="mathematics" ? "btn-primary": ""}`} onClick={this.handleSectionButton}>
-                  Mathematics
-                </button>
-                <button type="button" name="analitical-reasoning" className={`col btn fs-5 ${this.state.currentSection==="analitical-reasoning" ? "btn-primary": ""}`} onClick={this.handleSectionButton}>
-                Analitical Reasoning
-                </button>
-                <button type="button" name="computer" className={`col btn fs-5 ${this.state.currentSection==="computer" ? "btn-primary": ""}`} onClick={this.handleSectionButton}>
-                Computer
-                </button>
-                <button type="button" name="english" className={`col btn fs-5 ${this.state.currentSection==="english" ? "btn-primary": ""}`} onClick={this.handleSectionButton}>
-                English
-                </button>
+              {
+                this.state.sections ? this.state.sections.map((sec,idx) => (<button key = {idx} type="button" name="mathematics" className={`col fs-5 m-0  px-0 btn text-capitalize ${sec === this.state.currentSection ? "btn-primary": ""}`} onClick={this.handleSectionButton}>
+                  {sec}
+                </button>)) : null}
+                
               </div>
             </div>
             <hr className="m-0" />
             <div className="row  w-75">
               <div className="col  text-start text-danger">Question type : MCQ</div>
-              <div className="col text-end text-danger">Time left : {this.state.counter} min</div>
+              <div className="col text-end text-danger">Time left : {this.state.counter} sec</div>
             </div>
             <hr className="m-0" />
             <div className="col-3 px-2 fs-4 rounded bg-primary text-white text-center  text-capitalize">
